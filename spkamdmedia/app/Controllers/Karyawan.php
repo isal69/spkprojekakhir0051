@@ -16,12 +16,10 @@ class Karyawan extends BaseController{
 	public function simpandata(){
 		$mod = new Karyawanmodel();
 		$data = array(
-			'nik' => $this->request->getPost('nik'),
 			'nama' => $this->request->getPost('nama'),
 			'jekel' => $this->request->getPost('jekel'),
 			'alamat' => $this->request->getPost('alamat'),
-			'telepon' => $this->request->getPost('telepon'),
-			'status' => '1'
+			'telepon' => $this->request->getPost('telepon')
 		);
 		$mod->insert($data);
 		return redirect()->to(base_url('karyawan'));
@@ -31,12 +29,10 @@ class Karyawan extends BaseController{
 		$mod = new Karyawanmodel();
 		$id = $this->request->getPost('id');
 		$data = array(
-			'nik' => $this->request->getPost('nik'),
 			'nama' => $this->request->getPost('nama'),
 			'jekel' => $this->request->getPost('jekel'),
 			'alamat' => $this->request->getPost('alamat'),
-			'telepon' => $this->request->getPost('telepon'),
-			'status' => $this->request->getPost('status')
+			'telepon' => $this->request->getPost('telepon')
 		);
 		$mod->updatedata($id,$data);
 		return redirect()->to(base_url('karyawan'));

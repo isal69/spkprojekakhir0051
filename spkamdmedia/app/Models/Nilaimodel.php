@@ -6,7 +6,7 @@ class Nilaimodel extends Model{
 	protected $primmaryKey = 'idnilai';
 
 	protected $useAutoIncrement = true;
-	protected $allowedFields = ['nilai','periode','idkriteria','idkaryawan'];
+	protected $allowedFields = ['indikator','nilai','periode','idkriteria','idkaryawan'];
 
 	public function updatedata($id,$data){
 		$this->db->table('nilai')->where(['idnilai' => $id])->set($data)->update();

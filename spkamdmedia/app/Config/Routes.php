@@ -61,7 +61,9 @@ $routes->add('/nilai/simpan/(:any)', 'Nilai::simpandata/$1');
 
 $routes->add('/analisa', 'Analisa::index');
 $routes->add('/analisa/tampil', 'Analisa::tampildata');
-$routes->add('/analisa/process', 'Analisa::prosesdata');
+$routes->add('/analisa/process/(:any)', 'Analisa::prosesdata/$1');
+$routes->add('/analisa/print/(:any)', 'Analisa::cetakdata/$1');
+
 
 /*
  * --------------------------------------------------------------------

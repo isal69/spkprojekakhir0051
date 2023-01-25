@@ -6,7 +6,7 @@ class Karyawanmodel extends Model{
 	protected $primmaryKey = 'idkaryawan';
 
 	protected $useAutoIncrement = true;
-	protected $allowedFields = ['nik','nama','jekel','alamat','telepon','status'];
+	protected $allowedFields = ['nik','nama','jekel','alamat','telepon'];
 
 	public function updatedata($id,$data){
 		$this->db->table('karyawan')->where(['idkaryawan' => $id])->set($data)->update();

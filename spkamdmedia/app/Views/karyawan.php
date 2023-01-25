@@ -25,30 +25,20 @@
                                             <table class="table table-striped" id="table-1">
                                                 <thead>
                                                     <tr>
-                                                        <th>NIK</th>
                                                         <th>Nama</th>
                                                         <th>Jekel</th>
                                                         <th>Alamat</th>
                                                         <th>Telepon</th>
-                                                        <th>Status</th>
                                                         <th>#</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <?php foreach ($data as $d) {?>
                                                         <tr>
-                                                            <td><?php echo $d['nik'] ?></td>
                                                             <td><?php echo $d['nama'] ?></td>
                                                             <td><?php echo $d['jekel'] ?></td>
                                                             <td><?php echo $d['alamat'] ?></td>
                                                             <td><?php echo $d['telepon'] ?></td>
-                                                            <td>
-                                                                <?php if($d['status'] == 0){ ?>
-                                                                    <div class="badge badge-danger">Nonaktif</div>
-                                                                <?php }else{ ?>
-                                                                    <div class="badge badge-success">Aktif</div>
-                                                                <?php } ?>
-                                                            </td>
                                                             <td><button data-toggle="modal" data-target="#detail<?php echo $d['idkaryawan'] ?>" class="btn btn-warning btn-sm">Edit Data</button></td>
                                                         </tr>
                                                     <?php } ?>
@@ -78,10 +68,6 @@
             </div>
             <form method="post" action="<?php echo base_url('karyawan/simpan') ?>">
                 <div class="modal-body">
-                    <div class="form-group">
-                        <label>NIK</label>
-                        <input type="text" class="form-control form-control-sm" name="nik" placeholder="Nomor Induk Karyawan">
-                    </div>
                     <div class="form-group">
                         <label>Nama</label>
                         <input type="text" class="form-control form-control-sm" name="nama" placeholder="Nama Lengkap" required>
@@ -124,18 +110,14 @@
                     <input type="hidden" name="id" value="<?php echo $d['idkaryawan'] ?>">
                     <div class="modal-body">
                         <div class="form-group">
-                            <label>NIK</label>
-                            <input type="text" class="form-control form-control-sm" name="nik" placeholder="Nomor Induk Karyawan" value="<?php echo $d['nik'] ?>">
-                        </div>
-                        <div class="form-group">
                             <label>Nama</label>
                             <input type="text" class="form-control form-control-sm" name="nama" placeholder="Nama Lengkap" required value="<?php echo $d['nama'] ?>">
                         </div>
                         <div class="form-group">
                             <label>Jenis Kelamin</label>
                             <select class="form-control form-control-sm" name="jekel" required>
-                                <option <?php if($d['status'] == 'Wanita'){echo "selected";} ?>>Wanita</option>
-                                <option <?php if($d['status'] == 'Pria'){echo "selected";} ?>>Pria</option>
+                                <option <?php if($d['jekel'] == 'Wanita'){echo "selected";} ?>>Wanita</option>
+                                <option <?php if($d['jekel'] == 'Pria'){echo "selected";} ?>>Pria</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -145,13 +127,6 @@
                         <div class="form-group">
                             <label>Alamat</label>
                             <textarea class="form-control form-control-sm" name="alamat" placeholder="Alamat Lengkap" style="resize: none;" required><?php echo $d['alamat'] ?></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Status</label>
-                            <select class="form-control form-control-sm" name="status" required>
-                                <option <?php if($d['status'] == '1'){echo "selected";} ?> value="1">Aktif</option>
-                                <option <?php if($d['status'] == '0'){echo "selected";} ?> value="0">Nonaktif</option>
-                            </select>
                         </div>
                     </div>
                     <div class="modal-footer bg-whitesmoke br">

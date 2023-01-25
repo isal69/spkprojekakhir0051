@@ -16,12 +16,27 @@ class Kriteria extends BaseController{
 	public function simpandata(){
 		$mod = new Kriteriamodel();
 		$db = db_connect();
-		$data = array(
-			'kriteria' => $this->request->getPost('kriteria'),
-			'kategori' => $this->request->getPost('kategori'),
-			'bobot' => $this->request->getPost('bobot'),
-			'persentase' => 0
-		);
+		if($this->request->getPost('jenis') == 'input'){
+			$data = array(
+				'kriteria' => $this->request->getPost('kriteria'),
+				'kategori' => $this->request->getPost('kategori'),
+				'bobot' => $this->request->getPost('bobot'),
+				'jenis' => 'input',
+				'batas' => $this->request->getPost('batas'),
+				'satuan' => $this->request->getPost('satuan'),
+				'persentase' => 0
+			);
+		}else{
+			$data = array(
+				'kriteria' => $this->request->getPost('kriteria'),
+				'kategori' => $this->request->getPost('kategori'),
+				'bobot' => $this->request->getPost('bobot'),
+				'jenis' => 'indikator',
+				'batas' => 0,
+				'satuan' => '',
+				'persentase' => 0
+			);
+		}
 		$mod->insert($data);
 
 		$total = $db->query("select sum(bobot) as jumlah from kriteria")->getResultArray();
@@ -38,11 +53,25 @@ class Kriteria extends BaseController{
 		$mod = new Kriteriamodel();
 		$db = db_connect();
 		$id = $this->request->getPost('id');
-		$data = array(
-			'kriteria' => $this->request->getPost('kriteria'),
-			'kategori' => $this->request->getPost('kategori'),
-			'bobot' => $this->request->getPost('bobot')
-		);
+		if($this->request->getPost('jenis') == 'input'){
+			$data = array(
+				'kriteria' => $this->request->getPost('kriteria'),
+				'kategori' => $this->request->getPost('kategori'),
+				'bobot' => $this->request->getPost('bobot'),
+				'jenis' => 'input',
+				'batas' => $this->request->getPost('batas'),
+				'satuan' => $this->request->getPost('satuan')
+			);
+		}else{
+			$data = array(
+				'kriteria' => $this->request->getPost('kriteria'),
+				'kategori' => $this->request->getPost('kategori'),
+				'bobot' => $this->request->getPost('bobot'),
+				'jenis' => 'indikator',
+				'batas' => 0,
+				'satuan' => ''
+			);
+		}
 		$mod->updatedata($id,$data);
 
 		$total = $db->query("select sum(bobot) as jumlah from kriteria")->getResultArray();

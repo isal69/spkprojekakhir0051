@@ -30,7 +30,7 @@ $db = db_connect();
                                                     <tr>
                                                         <th>Indikator</th>
                                                         <th>Kriteria</th>
-                                                        <th>Nilai</th>
+                                                        <th>Nilai (%)</th>
                                                         <th>#</th>
                                                     </tr>
                                                 </thead>
@@ -79,8 +79,12 @@ $db = db_connect();
                     <div class="form-group">
                         <label>Kriteria</label>
                         <select class="form-control form-control-sm" name="idkriteria" required>
-                            <?php foreach ($daftarkriteria as $k) {?>
-                                <option value="<?php echo $k['idkriteria'] ?>"><?php echo $k['kriteria'] ?></option>
+                            <?php
+                            foreach ($daftarkriteria as $k) {
+                                if($k['jenis'] == 'indikator'){
+                                    ?>
+                                    <option value="<?php echo $k['idkriteria'] ?>"><?php echo $k['kriteria'] ?></option>
+                                <?php } ?>
                             <?php } ?>
                         </select>
                     </div>

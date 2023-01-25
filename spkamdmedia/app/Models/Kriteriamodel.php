@@ -6,7 +6,7 @@ class Kriteriamodel extends Model{
 	protected $primmaryKey = 'idkriteria';
 
 	protected $useAutoIncrement = true;
-	protected $allowedFields = ['kriteria','kategori','bobot','persentase'];
+	protected $allowedFields = ['kriteria','kategori','bobot','jenis','batas','satuan','persentase'];
 
 	public function updatedata($id,$data){
 		$this->db->table('kriteria')->where(['idkriteria' => $id])->set($data)->update();
